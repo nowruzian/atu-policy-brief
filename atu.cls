@@ -14,7 +14,7 @@
 \RequirePackage{xcolor}
 \definecolor{atugreen}{HTML}{00a693}
 \definecolor{atublue}{HTML}{1c39bb}
-\definecolor{atugray}{HTML}{ededed}
+\definecolor{atugray}{HTML}{666666}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass[twocolumn]{article}
@@ -23,6 +23,7 @@
 %% useful packages
 %%----------------------------------------------------------
 \usepackage{pgfplots}
+\usepackage{bidi}
 \RequirePackage{authblk}
 \RequirePackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -31,42 +32,36 @@
 \usepackage{esint}
 \usepackage{xepersian}
 \RequirePackage{graphicx}
-\RequirePackage{booktabs}
 \RequirePackage{subcaption}
 \RequirePackage[title]{appendix}
 \linespread{1.5}
 \settextfont{IRXLotus}
 \setdigitfont{Yas}
-\usepackage{hyperref}
 
-%%----------------------------------------------------------
-%% margins
-%%----------------------------------------------------------
+%----------------------------------------------------------
+% 							margins		  				%
+%----------------------------------------------------------
 
-\RequirePackage[left=1.5cm,
-                right=1.5cm,%
-                top=4.0cm,%
-                bottom=3cm,%
-  			   headheight=2.5cm,
-               ]{geometry}%
+\RequirePackage[a4paper, left=2cm, right=2cm, top=4.0cm, bottom=3cm, headheight=2.5cm,]{geometry}%
 
-%%----------------------------------------------------------
-%% main color
-%%----------------------------------------------------------
+%----------------------------------------------------------
+% 						main color  					   %
+%----------------------------------------------------------
+
 \renewcommand{\normalcolor}{\color{black}}
 
-%%----------------------------------------------------------
-%% title and headings
-%%----------------------------------------------------------
+%----------------------------------------------------------
+% 				  Title and Heading					%
+%----------------------------------------------------------
 
 
 \renewcommand{\maketitle}{% title format
 	    \twocolumn[%
-	    \fontsize{24}{24}\fontseries{b}% title font
-        \fontshape{n}\selectfont\normalcolor
+	    \fontsize{28}{20}\fontseries{b}% title font
+        \fontshape{n}\selectfont\normalcolor\
         \@title
         
-        \vspace{12pt}
+        \vspace{8pt}
         
         \fontsize{12}{10}\fontseries{m}% author font
         \fontshape{n}\selectfont\normalcolor
@@ -108,7 +103,7 @@
 %%----------------------------------------------------------
 %% main text
 %%----------------------------------------------------------
-\renewcommand{\normalsize}{\fontsize{13}{12}\selectfont}
+\renewcommand{\normalsize}{\fontsize{11}{15}\selectfont}
 
 %% drop caps
 %\RequirePackage{lettrine}
@@ -140,8 +135,8 @@
 \cfoot{}%
 \rfoot{\@title }%
 
-\renewcommand{\headrulewidth}{1pt}% % header rule
-\renewcommand{\footrulewidth}{1pt}% % footer rule
+\renewcommand{\headrulewidth}{0.5pt}% % header rule
+\renewcommand{\footrulewidth}{0.5pt}% % footer rule
 
 %%----------------------------------------------------------
 %% figure and table captions
@@ -155,10 +150,16 @@
 %%----------------------------------------------------------
 %% footnotes
 %%----------------------------------------------------------
+\let\footnotesize=\small
+\usepackage[singlespacing]{setspace}
+\def\FN@baselinestretch{1.7}
 
 \usepackage[hang, flushmargin,splitrule,multiple]{footmisc}
-\usepackage{etoolbox}
+\setlength{\footnotemargin}{0.8em} % Between marker and text
+\setlength{\skip\footins}{1\baselineskip} % Between main text and note rule
+\setlength{\footnotesep}{0.75\skip\footins} % Between footnotes [= previous]
 
+\usepackage{etoolbox}
 \makeatletter%%
 \patchcmd{\@makefntext}{%
 \ifFN@hangfoot
@@ -174,11 +175,4 @@
 \ifdim\footnotemargin>\z@
 \hb@xt@ \footnotemargin{\@makefnmark\hss}}{}{}%
 \makeatother
-
-\setlength{\footnotemargin}{0.8em} % Between marker and text
-\setlength{\skip\footins}{1\baselineskip} % Between main text and note rule
-\setlength{\footnotesep}{0.5\skip\footins} % Between footnotes [= previous]
-
-\renewcommand{\hangfootparskip}{0pt}
-\renewcommand{\hangfootparindent}{1em}
 
