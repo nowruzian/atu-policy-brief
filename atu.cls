@@ -2,7 +2,7 @@
 %% atu.cls
 %% v1.0
 %% 2022/11/25
-%% by Samad nowruzian based on XIE Yuhao templates
+%% by Samad nowruzian based on XIE Yuhao template
 %%----------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
